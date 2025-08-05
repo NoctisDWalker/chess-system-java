@@ -1,8 +1,5 @@
 package boardgame;
 
-/*
- * Classe para calcular a posição de uma peça no tabuleiro
- */
 public class Position {
     private int row;
     private int column;
