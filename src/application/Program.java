@@ -7,6 +7,7 @@ import chess.ChessPosition;
 
 import java.awt.image.ImagingOpException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class Program {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMate()) {
             try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
@@ -41,10 +42,13 @@ public class Program {
             } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            } catch (ImagingOpException e) {
+
+            } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }
